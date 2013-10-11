@@ -52,20 +52,32 @@ describe StupidData do
       results[2].male?.should be_false
     end
 
-    it "hydrates result object attributes with dates" do
-      pending
-    end
-
-    it "hydrates result object attributes with timestamps" do
-      pending
-    end
-
     it "hydrates result object attributes with numerics" do
-      pending
+      results = database.query("select avg_rating from users order by avg_rating asc")
+      results[0].avg_rating.should == 4.5
+      results[1].avg_rating.should == 4.75
+      results[2].avg_rating.should == 5.0
     end
 
     it "hydrates result object attributes with nulls" do
-      pending
+      results = database.query("select school from users order by id asc")
+      results[0].school.should be_nil
+      results[1].school.should be_nil
+      results[2].school.should == "A cool school"
+    end
+
+    it "hydrates result object attributes with dates" do
+      results = database.query("select dob from users order by id asc")
+      results[0].dob.should == Date.new(1977, 10, 4)
+      results[1].dob.should == Date.new(1978, 3, 3)
+      results[2].dob.should == Date.new(2005, 12, 14)
+    end
+
+    it "hydrates result object attributes with timestamps" do
+      results = database.query("select created_at from users order by id asc")
+      results[0].created_at.should == DateTime.new(2013, 10, 11, 20, 10, 05)
+      results[1].created_at.should == DateTime.new(2013, 10, 11, 12, 18, 00)
+      results[2].created_at.should == DateTime.new(2013, 10, 11, 05, 01, 59)
     end
 
     it "raises an exception if there is a syntax error within the query" do

@@ -6,11 +6,14 @@ CREATE TABLE users (
   age         integer,
   male        boolean,
   dob         date,
-  created_at  timestamp DEFAULT current_timestamp,
   avg_rating  numeric,
-  school      varchar
+  school      varchar,
+  created_at  timestamp
 );
 
-INSERT INTO users (name, age, male, dob, avg_rating, school) VALUES ('Andy', 36, true, '4/10/1977', 4.5, NULL);
-INSERT INTO users (name, age, male, dob, avg_rating, school) VALUES ('Michela', 35, false, '3/3/1978', 4.75, NULL);
-INSERT INTO users (name, age, male, dob, avg_rating, school) VALUES ('Amber', 8, false, '14/12/2005', 5.0, 'A cool school');
+INSERT INTO users (name, age, male, dob, avg_rating, school, created_at) 
+  VALUES ('Andy', 36, true, '1977-10-4', 4.5, NULL, '2013-10-11 20:10:05');
+INSERT INTO users (name, age, male, dob, avg_rating, school, created_at) 
+  VALUES ('Michela', 35, false, '1978-3-3', 4.75, NULL, '2013-10-11 12:18:00');
+INSERT INTO users (name, age, male, dob, avg_rating, school, created_at) 
+  VALUES ('Amber', 8, false, '2005-12-14', 5.0, 'A cool school', '2013-10-11 05:01:59');
