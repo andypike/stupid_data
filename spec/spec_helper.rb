@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'stupid_data'
 
-# Dir["./spec/support/**/*.rb"].each { |f| require f }
+Dir["./spec/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.order = 'random'

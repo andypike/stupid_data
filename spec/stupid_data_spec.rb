@@ -80,6 +80,12 @@ describe StupidData do
       results[2].created_at.should == DateTime.new(2013, 10, 11, 05, 01, 59)
     end
 
+    it "returns concrete type records if a class is supplied" do
+      results = database.query("select * from users order by id asc", User)
+      results[0].should be_a_kind_of User
+      results[0].name.should == "Andy"
+    end
+
     it "raises an exception if there is a syntax error within the query" do
       expect { database.query("select does_not_exist from wtf") }.to raise_error
     end
