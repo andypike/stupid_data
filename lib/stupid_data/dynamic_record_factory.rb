@@ -12,7 +12,7 @@ class DynamicRecordFactory
       record[field_name] = type_converter.convert(row[field_name], field_type)
       
       if field_type == :boolean
-        record[(field_name + "?").to_sym] = record[field_name.to_sym]
+        record["#{field_name}?"] = record[field_name]
       end
     end
 

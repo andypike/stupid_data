@@ -8,8 +8,8 @@ Why?
 
 ActiveRecord is awesome but I wondered what a super simple ORM might look like. Nothing clever, just really basic and stupid.
 
-How to use to get data
-----------------------
+How to query for data
+---------------------
 
 To get a collection of dynamic objects with attributes that match the columns returned by the select statement:
 
