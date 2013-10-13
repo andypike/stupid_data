@@ -8,6 +8,17 @@ Why?
 
 ActiveRecord is awesome but I wondered what a super simple ORM might look like. Nothing clever, just really basic and stupid.
 
+Stupid means it's not that flexible
+-----------------------------------
+
+Here are some limitations:
+
+* Only works with Postgres.
+* Table names must be plural of the class.
+* There is no query DSL, just use SQL.
+* There are no association loading (and so no select n+1 issues)
+* Tables/classes must have an integer id field/attribute that the db increments
+
 How to query for data
 ---------------------
 
@@ -18,11 +29,11 @@ db = StupidData.new("dbname=my_cool_database")
 users = db.query("select name from users")
 
 users.each do |user|
-  puts user.name
+  puts user.name  # => "Andy"
 end
 ```
 
-To get a collection of objects of a specific type, setting the attributes that match columns in the returned records:
+To get a collection of objects of a specific type, setting the attributes that match columns in the returned records, other attributes will be nil:
 
 ```
 class User
@@ -33,7 +44,8 @@ db = StupidData.new("dbname=my_cool_database")
 users = db.query("select name from users", User)
 
 users.each do |user|
-  puts user.name
+  puts user.name  # => "Andy"
+  puts user.id    # => nil
 end
 ```
 
