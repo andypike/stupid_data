@@ -18,12 +18,40 @@ class StupidData
         records << record_factory(klass).create(fields, row)
       end
     end
+    conn.close
 
     records
   end
 
   def count(command)
     return query(command).first.count
+  end
+
+  def insert(object)
+    table_name = object.class.name.downcase.pluralize
+    fields = query("select column_name, data_type from INFORMATION_SCHEMA.COLUMNS where table_name = '#{table_name}' and column_name <> 'id';")
+    raise "There isn't a table called '#{table_name}' and so insert failed." if fields.empty?
+
+    field_names = fields.map(&:column_name) & object.methods.map(&:to_s)
+    values = field_names.map { |fn| object.send(fn) }
+
+    subs = 1.upto(values.count).map {|x| "$#{x}"}
+    command = "insert into #{table_name} (#{field_names.join(',')}) values (#{subs.join(',')}) returning id;"
+
+    conn = PG.connect(@connection_string)
+    conn.exec_params(command, values) do |result|
+      object.id = result.first["id"].to_i
+    end
+
+    conn.close
+  end
+
+  def update
+    raise "Not implemented"
+  end
+
+  def delete
+    raise "Not implemented"
   end
 
   private

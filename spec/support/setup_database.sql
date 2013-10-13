@@ -17,3 +17,29 @@ INSERT INTO users (name, age, male, dob, avg_rating, school, created_at)
   VALUES ('Michela', 35, false, '1978-3-3', 4.75, NULL, '2013-10-11 12:18:00');
 INSERT INTO users (name, age, male, dob, avg_rating, school, created_at) 
   VALUES ('Amber', 8, false, '2005-12-14', 5.0, 'A cool school', '2013-10-11 05:01:59');
+
+CREATE TABLE orders (
+  id          BIGSERIAL PRIMARY KEY,
+  number      integer
+);
+
+CREATE TABLE products (
+  id          BIGSERIAL PRIMARY KEY,
+  name        varchar(100)
+);
+
+CREATE TABLE coffees (
+  id          BIGSERIAL PRIMARY KEY,
+  name        varchar(100),
+  strength    integer DEFAULT 1
+);
+
+CREATE TABLE teas (
+  id          BIGSERIAL PRIMARY KEY,
+  name        varchar(100)
+);
+
+CREATE TABLE beers (
+  id          BIGSERIAL PRIMARY KEY,
+  name        varchar(100)
+);

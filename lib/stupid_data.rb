@@ -2,6 +2,8 @@ require "pg"
 require "ostruct"
 require "bigdecimal"
 
+require 'active_support/inflector'
+
 require "stupid_data/stupid_data"
 require "stupid_data/type_converter"
 require "stupid_data/field_info_factory"

@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
     diff-lcs (1.2.4)
     pg (0.17.0)
     rspec (2.14.1)
@@ -16,5 +19,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_support
   pg
   rspec (~> 2.14.1)

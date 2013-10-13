@@ -14,8 +14,8 @@ How to query for data
 To get a collection of dynamic objects with attributes that match the columns returned by the select statement:
 
 ```
-database = StupidData.new("dbname=my_cool_database")
-users = database.query("select name from users")
+db = StupidData.new("dbname=my_cool_database")
+users = db.query("select name from users")
 
 users.each do |user|
   puts user.name
@@ -29,8 +29,8 @@ class User
   attr_accessor :name
 end
 
-database = StupidData.new("dbname=my_cool_database")
-users = database.query("select name from users", User)
+db = StupidData.new("dbname=my_cool_database")
+users = db.query("select name from users", User)
 
 users.each do |user|
   puts user.name
@@ -43,8 +43,8 @@ How use count queries
 ---------------------
 
 ```
-database = StupidData.new("dbname=my_cool_database")
-num_of_users = database.count("select count(*) from users")
+db = StupidData.new("dbname=my_cool_database")
+num_of_users = db.count("select count(*) from users")
 ```
 
 How to insert new records
@@ -61,5 +61,3 @@ How to delete existing records
 ------------------------------
 
 TODO
-
-
