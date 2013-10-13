@@ -74,6 +74,8 @@ user.name = "Andy"
 
 db = StupidData.new("dbname=my_cool_database")
 db.insert(user)
+
+puts user.id # => 1
 ```
 
 How to update existing records
