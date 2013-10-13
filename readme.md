@@ -39,6 +39,14 @@ end
 
 When retrieving data from queries, types are converted based on the database column types.
 
+How use count queries
+---------------------
+
+```
+database = StupidData.new("dbname=my_cool_database")
+num_of_users = database.count("select count(*) from users")
+```
+
 How to insert new records
 -------------------------
 
@@ -54,7 +62,4 @@ How to delete existing records
 
 TODO
 
-How use count queries
----------------------
 
-TODO

@@ -22,6 +22,10 @@ class StupidData
     records
   end
 
+  def count(command)
+    return query(command).first.count
+  end
+
   private
 
   def record_factory(klass)

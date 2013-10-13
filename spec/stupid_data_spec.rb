@@ -1,9 +1,9 @@
 require "spec_helper"
 
 describe StupidData do
-  context "When retrieving data" do
-    subject(:database) { StupidData.new("dbname=stupid_data") }
+  subject(:database) { StupidData.new("dbname=stupid_data") }
 
+  context "#query" do
     it "populates a collection with the correct number of records" do
       results = database.query("select id, name from users")
       results.count.should == 3
@@ -88,6 +88,13 @@ describe StupidData do
 
     it "raises an exception if there is a syntax error within the query" do
       expect { database.query("select does_not_exist from wtf") }.to raise_error
+    end
+  end
+
+  context "#count" do
+    it "returns the number of matching records" do
+      num_of_users = database.count("select count(*) from users")
+      num_of_users.should == 3
     end
   end
 end
