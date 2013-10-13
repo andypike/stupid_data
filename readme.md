@@ -26,7 +26,7 @@ To get a collection of objects of a specific type, setting the attributes that m
 
 ```
 class User
-  attr_accessor :name
+  attr_accessor :id, :name
 end
 
 db = StupidData.new("dbname=my_cool_database")
@@ -50,7 +50,16 @@ num_of_users = db.count("select count(*) from users")
 How to insert new records
 -------------------------
 
-TODO
+This will insert a new record in a table matching the plural of the class name. Attributes that have matching fields in this table will be stored. The class/table must have an id attribute/field.
+
+```
+class User
+  attr_accessor :id, :name
+end
+
+db = StupidData.new("dbname=my_cool_database")
+db.insert(user)
+```
 
 How to update existing records
 ------------------------------
