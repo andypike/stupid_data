@@ -30,7 +30,7 @@ class StupidData
   def insert(object)
     update_or_insert(object) do |field_names, table_name|
       subs = 1.upto(field_names.count).map {|x| "$#{x}"}
-      command = "insert into #{table_name} (#{field_names.join(',')}) values (#{subs.join(',')}) returning id;"
+      "insert into #{table_name} (#{field_names.join(',')}) values (#{subs.join(',')}) returning id;"
     end
   end
 

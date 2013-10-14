@@ -18,6 +18,7 @@ Here are some limitations:
 * There is no query DSL, just use SQL.
 * There are no association loading (and so no select n+1 issues)
 * Tables/classes must have an integer id field/attribute that the db increments
+* Objects that are inserted/updated must have an id attribute
 
 How to query for data
 ---------------------
@@ -81,7 +82,20 @@ puts user.id # => 1
 How to update existing records
 ------------------------------
 
-TODO
+This will update a record in a table matching the plural of the class name by it's id. All attributes that match fields in the table will be overwritten.
+
+```
+class User
+  attr_accessor :id, :name
+end
+
+user = User.new
+user.id = 2
+user.name = "Andy"
+
+db = StupidData.new("dbname=my_cool_database")
+db.update(user)
+```
 
 How to delete existing records
 ------------------------------

@@ -101,6 +101,14 @@ describe StupidData do
     it "raises an exception if there is a syntax error within the query" do
       expect { database.query("select does_not_exist from wtf") }.to raise_error
     end
+
+    it "supports symbol interploation of query string and hash of values (which protect against sql injection)" do
+      pending
+    end
+
+    it "supports getting a single result (first) rather than a collection" do
+      pending
+    end
   end
 
   context "#count" do
@@ -171,6 +179,10 @@ describe StupidData do
       beers.count.should == 1
       beers.first.name.should == "Foster's"
     end
+
+    it "supports keyword/reserved word fields" do
+      pending
+    end
   end
 
   context "#update" do
@@ -189,10 +201,21 @@ describe StupidData do
       accounts.first.id.should == 1
     end
 
-    
+    it "support only updating a specific set of fields" do
+      pending
+    end
   end
 
   context "#delete" do
-    
+    # deletes one or more rows by id
+    # supports full delete query
+  end
+
+  context "#find" do
+    # load object(s) by id(s)
+  end
+
+  context "#save" do
+    # helper that calls either insert or update based on the object id value (0 or nil -> insert else update)
   end
 end
