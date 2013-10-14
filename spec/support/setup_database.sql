@@ -43,3 +43,11 @@ CREATE TABLE beers (
   id          BIGSERIAL PRIMARY KEY,
   name        varchar(100)
 );
+
+CREATE TABLE accounts (
+  id          BIGSERIAL PRIMARY KEY,
+  name        varchar(100),
+  score       integer
+);
+
+INSERT INTO accounts (name, score) values ('Old Name', 20);

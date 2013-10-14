@@ -174,6 +174,21 @@ describe StupidData do
   end
 
   context "#update" do
+    it "overwrites all matching fields with attribute values of a given object" do
+      account = Account.new
+      account.id = 1
+      account.name = "New name"
+      account.score = 50
+
+      database.update(account)
+
+      accounts = database.query("select * from accounts")
+      accounts.count.should == 1
+      accounts.first.name.should == "New name"
+      accounts.first.score.should == 50
+      accounts.first.id.should == 1
+    end
+
     
   end
 
